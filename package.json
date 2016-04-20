@@ -1,0 +1,15 @@
+{
+  "name": "involve_sample",
+  "description": "involve live sample",
+  "version": "0.0.1",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-file-include": "^0.13.7",
+    "gulp-less": "^3.0.5",
+    "gulp-watch": "^4.3.5",
+    "gulp-webserver": "^0.9.1",
+    "gulp.spritesmith": "^6.2.1",
+    "run-sequence": "^1.1.5"
+  }
+}
