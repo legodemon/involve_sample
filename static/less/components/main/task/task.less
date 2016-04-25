@@ -1,38 +1,128 @@
 .task {
-  
+
   display: flex;
-  background-color: beige;
-  border: 1px solid bisque;
-  border-radius: 3px;
-  
-  .task-avatar {
-    width: 64/@rem;
-    height: 64/@rem;
-    
-    img {
-      border-radius: 50%;
+  justify-content: space-between;
+
+  flex-direction: column;
+
+  background-color: @taskBubbleBgColor;
+  border: 1/@px-rem solid @taskBubbleBorderColor;
+  border-radius: 3/@px-rem;
+
+  margin: 16/@px-rem 16/@px-rem 0 16/@px-rem;
+  padding: 20/@px-rem 16/@px-rem 16/@px-rem 16/@px-rem;
+
+  align-items: center;
+
+  .task-body {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    .task-content {
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      margin-left: 10/@px-rem;
+
+      margin-top: -8/@px-rem;
+
+      width: 100%;
+
+      .task-title {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .task-title-value {
+          font-weight: 500;
+
+          line-height: 32/@px-rem;
+          font-size: 16/@px-rem;
+
+          color: @taskBubbleTitleColor;
+        }
+
+        .task-actions {
+          border-radius: 50%;
+          background-color: @taskBubbleActionBgColor;
+          min-width: 16/@px-rem;
+          max-height: 16/@px-rem;
+
+          line-height: 16/@px-rem;
+          font-size: 8/@px-rem;
+
+          color: @taskBubbleActionColor;
+          text-align: center;
+        }
+      }
+
+      .task-description {
+        font-weight: 300;
+        color: @taskBubbleDescrColor;
+      }
+
+      .task-member {
+        font-weight: 300;
+        color: @taskBubbleMemberColor;
+      }
+
+      .task-continues {
+        font-weight: 300;
+        color: @taskBubbleContinuesColor;
+      }
     }
   }
-  
-  .task-content {
-    
-    .task-title {
-      
+  .task-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    &.task-action-orange {
+      border-top: 1/@px-rem solid @quickExodusOrange;
+      .task-action-title {
+        color: @quickExodusOrange;
+      }
     }
-    
-    .task-description {
-      
+
+    &.task-action-blue {
+      border-top: 1/@px-rem solid @quickExodusBlue;
+      .task-action-title {
+        color: @quickExodusBlue;
+      }
     }
-    
+
+    &.task-action-aqua {
+      border-top: 1/@px-rem solid @quickExodusAqua;
+      .task-action-title {
+        color: @quickExodusAqua;
+      }
+    }
+
+    width: 77%;
+
+    margin-top: 5/@px-rem;
+
+    .task-action-title {
+      font-weight: 500;
+
+      margin-top: 5/@px-rem;
+      margin-bottom: 2/@px-rem;
+
+    }
+
+    .task-action-description {
+      font-size: 14/@px-rem;
+      font-weight: 300;
+      color: @taskBubbleContinuesColor;
+    }
   }
-  
-  .task-number{
-    border-radius: 50%;
-    background-color: #199a00;
-    min-width: 32/@rem;
-    min-height: 32/@rem;
-    font-size: 16/@rem;
-    color: #ffffff;
-  }
-  
+
 }

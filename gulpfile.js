@@ -95,5 +95,9 @@ gulp.task('default', function () {
         console.log('rebuild index.html');
         runSequence('build-index.html')
     });
-
+    
+    watch(STATIC_DIRECTORY + '/js/**/*.js', function () {
+        console.log('copy js');
+        runSequence('copy')
+    });
 });
