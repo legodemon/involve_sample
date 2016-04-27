@@ -1,30 +1,89 @@
 'use strict';
 
-document.addEventListener("DOMContentLoaded", function () {
-    
-    var taskDescriptionsElements = Array.prototype.slice.call(document.querySelectorAll('.task-description'));
+function animate(options) {
 
-    taskDescriptionsElements.forEach(function (element) {
+    var start = performance.now();
 
-        var text = element.innerHTML,
-            clone = document.createElement('div');
-
-        clone.style.position = 'absolute';
-        clone.style.visibility = 'hidden';
-        clone.style.width = element.clientWidth + 'px';
-        clone.innerHTML = text;
-
-        document.body.appendChild(clone);
-
-
-        for (var l = text.length - 1; l >= 0 && clone.clientHeight > element.clientHeight; --l) {
-            console.log(clone.innerHTML);
-            clone.innerHTML = text.substring(0, l) + '...';
+    requestAnimationFrame(function animate(time) {
+        // timeFraction от 0 до 1
+        var timeFraction = (time - start) / options.duration;
+        if (timeFraction > 1) {
+            timeFraction = 1;
         }
-        
 
-        element.innerHTML = clone.innerHTML;
+        // текущее состояние анимации
+        var progress = options.timing(timeFraction);
+
+        options.draw(progress);
+
+        if (timeFraction < 1) {
+            requestAnimationFrame(animate);
+        }
+
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    var contentContainer = document.querySelector('.content'),
+        chatContainer = document.querySelector('.chat'),
+        taskContainer = document.querySelector('.task');
+
+    chatContainer.style.width = contentContainer.clientWidth - 2 * parseInt(window.getComputedStyle(contentContainer).padding) + 'px';
+    chatContainer.style.position = "absolute";
+    chatContainer.style.right = -window.innerWidth + 'px';
+
+    taskContainer.style.width = contentContainer.clientWidth - 2 * parseInt(window.getComputedStyle(contentContainer).padding) + 'px';
+    taskContainer.style.position = "absolute";
+    taskContainer.style.left = '10px';
+
+    taskContainer.addEventListener('click', function () {
+
+        var duration = 400;
+
+        var chatContainerStartPosition = -window.innerWidth;
+        var chatContainerStopPosition = 10;
+
+        var taskContainerStartPosition = 10;
+        var taskContainerStopPosition = -window.innerWidth;
+
+        var velocity = (chatContainerStopPosition - chatContainerStartPosition) / duration;
+
+        animate({
+            duration: duration,
+            timing: function (timeFraction) {
+                return timeFraction;
+            },
+            draw: function (progress) {
+                chatContainer.style.right = chatContainerStartPosition + (velocity * progress * duration) + 'px';
+                taskContainer.style.left = taskContainerStartPosition - (velocity * progress * duration) + 'px';
+            }
+        });
+
     });
 
+    chatContainer.addEventListener('click', function(){
+
+        var duration = 400;
+
+        var chatContainerStartPosition = 10;
+        var chatContainerStopPosition = -window.innerWidth;
+
+        var taskContainerStartPosition = -window.innerWidth;
+        var taskContainerStopPosition = 10;
+
+        var velocity = (chatContainerStopPosition - chatContainerStartPosition) / duration;
+
+        animate({
+            duration: duration,
+            timing: function (timeFraction) {
+                return timeFraction;
+            },
+            draw: function (progress) {
+                chatContainer.style.right = chatContainerStartPosition + (velocity * progress * duration) + 'px';
+                taskContainer.style.left = taskContainerStartPosition - (velocity * progress * duration) + 'px';
+            }
+        });
+    })
 });
 
