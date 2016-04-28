@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var contentContainer = document.querySelector('.content'),
         chatContainer = document.querySelector('.chat'),
         taskContainer = document.querySelector('.task'),
-        headerChatContainer = document.querySelector('.header-chat');
+        headerChatContainer = document.querySelector('.header-chat'),
+        footerChatContainer = document.querySelector('.footer-chat');
 
     chatContainer.style.width = contentContainer.clientWidth - 2 * parseInt(window.getComputedStyle(contentContainer).padding) + 'px';
     chatContainer.style.position = 'absolute';
@@ -40,16 +41,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     headerChatContainer.style.top = -headerChatContainer.offsetHeight - 3 + 'px'; // minus height box-shadow
 
+    footerChatContainer.style.bottom = -footerChatContainer.offsetHeight - 1 + 'px';
+
     taskContainer.addEventListener('click', function () {
 
         var duration = 200,
             chatContainerStartPosition = -window.innerWidth,
             chatContainerStopPosition = 10,
             taskContainerStartPosition = 10,
-            headerChatContainerStartPosition = parseInt(headerChatContainer.style.top);
+            headerChatContainerStartPosition = parseInt(headerChatContainer.style.top),
+            footerChatContainerStartPosition = parseInt(footerChatContainer.style.bottom);
 
         var velocity = (chatContainerStopPosition - chatContainerStartPosition) / duration,
-            headerVelocity = (0 - headerChatContainerStartPosition) / duration;
+            headerVelocity = (0 - headerChatContainerStartPosition) / duration,
+            footerVelocity = (0 - footerChatContainerStartPosition) / duration;
 
         animate({
             duration: duration,
@@ -60,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 chatContainer.style.right = chatContainerStartPosition + (velocity * progress * duration) + 'px';
                 taskContainer.style.left = taskContainerStartPosition - (velocity * progress * duration) + 'px';
                 headerChatContainer.style.top = headerChatContainerStartPosition + (headerVelocity * progress * duration) + 'px';
+                footerChatContainer.style.bottom = footerChatContainerStartPosition + (footerVelocity * progress * duration) + 'px';
             },
             onStart: function () {
                 taskContainer.style.position = 'absolute';
@@ -79,7 +85,9 @@ document.addEventListener("DOMContentLoaded", function () {
             chatContainerStopPosition = -window.innerWidth,
             taskContainerStartPosition = -window.innerWidth,
             velocity = (chatContainerStopPosition - chatContainerStartPosition) / duration,
-            headerVelocity = 54 / duration;
+            headerVelocity = 54 / duration,
+        //footerChatContainerStartPosition = parseInt(footerChatContainer.style.bottom),
+            footerVelocity = 54 / duration;
 
         animate({
             duration: duration,
@@ -90,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 chatContainer.style.right = chatContainerStartPosition + (velocity * progress * duration) + 'px';
                 taskContainer.style.left = taskContainerStartPosition - (velocity * progress * duration) + 'px';
                 headerChatContainer.style.top = -(headerVelocity * progress * duration) + 'px';
+                footerChatContainer.style.bottom = -(footerVelocity * progress * duration) + 'px';
             },
             onStart: function () {
                 chatContainer.style.position = 'absolute';
