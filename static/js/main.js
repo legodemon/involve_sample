@@ -5,13 +5,15 @@ function animate(options) {
     var start = performance.now();
 
     requestAnimationFrame(function animate(time) {
-        // timeFraction от 0 до 1
+
+        (typeof options.onStart === 'function') && options.onStart();
+
         var timeFraction = (time - start) / options.duration;
         if (timeFraction > 1) {
             timeFraction = 1;
+            (typeof options.onEnd === 'function') && options.onEnd();
         }
 
-        // текущее состояние анимации
         var progress = options.timing(timeFraction);
 
         options.draw(progress);
@@ -30,12 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
         taskContainer = document.querySelector('.task');
 
     chatContainer.style.width = contentContainer.clientWidth - 2 * parseInt(window.getComputedStyle(contentContainer).padding) + 'px';
-    chatContainer.style.position = "absolute";
+    chatContainer.style.position = 'absolute';
     chatContainer.style.right = -window.innerWidth + 'px';
 
     taskContainer.style.width = contentContainer.clientWidth - 2 * parseInt(window.getComputedStyle(contentContainer).padding) + 'px';
-    taskContainer.style.position = "absolute";
-    taskContainer.style.left = '10px';
 
     taskContainer.addEventListener('click', function () {
 
@@ -57,22 +57,26 @@ document.addEventListener("DOMContentLoaded", function () {
             draw: function (progress) {
                 chatContainer.style.right = chatContainerStartPosition + (velocity * progress * duration) + 'px';
                 taskContainer.style.left = taskContainerStartPosition - (velocity * progress * duration) + 'px';
+            },
+            onStart: function () {
+                taskContainer.style.position = 'absolute';
+                taskContainer.style.left = '10px';
+            },
+            onEnd: function () {
+                chatContainer.style.position = 'initial';
             }
         });
 
     });
 
-    chatContainer.addEventListener('click', function(){
+    chatContainer.addEventListener('click', function () {
 
-        var duration = 400;
-
-        var chatContainerStartPosition = 10;
-        var chatContainerStopPosition = -window.innerWidth;
-
-        var taskContainerStartPosition = -window.innerWidth;
-        var taskContainerStopPosition = 10;
-
-        var velocity = (chatContainerStopPosition - chatContainerStartPosition) / duration;
+        var duration = 400,
+            chatContainerStartPosition = 10,
+            chatContainerStopPosition = -window.innerWidth,
+            taskContainerStartPosition = -window.innerWidth,
+            taskContainerStopPosition = 10,
+            velocity = (chatContainerStopPosition - chatContainerStartPosition) / duration;
 
         animate({
             duration: duration,
@@ -82,6 +86,13 @@ document.addEventListener("DOMContentLoaded", function () {
             draw: function (progress) {
                 chatContainer.style.right = chatContainerStartPosition + (velocity * progress * duration) + 'px';
                 taskContainer.style.left = taskContainerStartPosition - (velocity * progress * duration) + 'px';
+            },
+            onStart: function () {
+                chatContainer.style.position = 'absolute';
+            },
+            onEnd: function () {
+                //chatContainer.style.position = 'initial';
+                taskContainer.style.position = 'initial'
             }
         });
     })

@@ -1,0 +1,48 @@
+.header-main {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  width: 100%;
+  height: 1/@px-rem;
+  min-height: @headerHeight;
+
+  padding-left: 10/@px-rem;
+  padding-right: 10/@px-rem;
+
+  background-color: #f3f3ea;
+
+  box-shadow: 0 3px 3px 0 rgba(199, 199, 199, 1);
+
+  .header-button {
+
+    height: 100%;
+
+    line-height: @headerHeight;
+
+    padding-left: 25px;
+    padding-right: 25px;
+
+    cursor: pointer;
+
+    text-transform: uppercase;
+    color: #9C3F38;
+
+    &.header-button-clicked {
+      border-bottom: 3px solid #9C3F38;
+    }
+  }
+
+  .header-button-add {
+
+  }
+}
