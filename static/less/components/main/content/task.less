@@ -13,115 +13,114 @@
   margin-bottom: 10/@px-rem;
   padding: 20/@px-rem 16/@px-rem 16/@px-rem 16/@px-rem;
 
-  .task-body {
-    display: flex;
-    justify-content: space-between;
+}
 
-    width: 100%;
+.task-body {
+  display: flex;
+  justify-content: space-around;
 
-    .task-content {
+  width: 100%;
+}
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-wrap: wrap;
+.task-content {
 
-      margin-left: 50/@px-rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
-      margin-top: -8/@px-rem;
+  margin-left: 20/@px-rem;
 
-      width: 100%;
+  margin-top: -8/@px-rem;
 
-      .task-title {
+  width: 100%;
+}
 
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+.task-title {
 
-        .task-title-value {
-          font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
-          line-height: 32/@px-rem;
-          font-size: 16/@px-rem;
+.task-title-value {
+  font-weight: 500;
 
-          color: @taskBubbleTitleColor;
-        }
+  line-height: 32/@px-rem;
+  font-size: 16/@px-rem;
 
-        .task-actions {
-          border-radius: 50%;
-          background-color: @taskBubbleActionBgColor;
-          min-width: 16/@px-rem;
-          max-height: 16/@px-rem;
+  color: @taskBubbleTitleColor;
+}
 
-          line-height: 16/@px-rem;
-          font-size: 8/@px-rem;
+.task-actions {
+  border-radius: 10px;
+  background-color: @taskBubbleActionBgColor;
+  min-width: 16/@px-rem;
+  max-height: 16/@px-rem;
 
-          color: @taskBubbleActionColor;
-          text-align: center;
-        }
-      }
+  line-height: 16/@px-rem;
+  font-size: 10/@px-rem;
 
-      .task-description {
-        font-weight: 300;
-        color: @taskBubbleDescrColor;
-      }
+  color: @taskBubbleActionColor;
+  text-align: center;
+}
 
-      .task-member {
-        font-weight: 300;
-        color: @taskBubbleMemberColor;
-      }
+.task-description {
+  font-weight: 300;
+  color: @taskBubbleDescrColor;
+}
 
-      .task-continues {
-        font-weight: 300;
-        color: @taskBubbleContinuesColor;
-      }
-    }
-  }
-  .task-action {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+.task-member {
+  font-weight: 300;
+  color: @taskBubbleMemberColor;
+}
 
-    &.task-action-inwork {
-      border-top: 1/@px-rem solid @DecisionInwork;
-      .task-action-title {
-        color: @DecisionInwork;
-      }
-    }
+.task-continues {
+  font-weight: 300;
+  color: @taskBubbleContinuesColor;
+}
 
-    &.task-action-toverify {
-      border-top: 1/@px-rem solid @DecisionToverify;
-      .task-action-title {
-        color: @DecisionToverify;
-      }
-    }
-
-    &.task-action-todo {
-      border-top: 1/@px-rem solid @DecisionTodo;
-      .task-action-title {
-        color: @DecisionTodo;
-      }
-    }
-
-    width: 77%;
-
-    margin-top: 5/@px-rem;
-
+.task-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 77%;
+  margin-top: 5/@px-rem;
+  
+  &.task-action-inwork {
+    border-top: 1/@px-rem solid @DecisionInwork;
     .task-action-title {
-      font-weight: 500;
-
-      margin-top: 5/@px-rem;
-      margin-bottom: 2/@px-rem;
-
-    }
-
-    .task-action-description {
-      font-size: 14/@px-rem;
-      font-weight: 300;
-      color: @taskBubbleContinuesColor;
+      color: @DecisionInwork;
     }
   }
 
+  &.task-action-toverify {
+    border-top: 1/@px-rem solid @DecisionToverify;
+    .task-action-title {
+      color: @DecisionToverify;
+    }
+  }
+
+  &.task-action-todo {
+    border-top: 1/@px-rem solid @DecisionTodo;
+    .task-action-title {
+      color: @DecisionTodo;
+    }
+  }
+}
+
+.task-action-title {
+  font-weight: 500;
+
+  margin-top: 5/@px-rem;
+  margin-bottom: 2/@px-rem;
+
+}
+
+.task-action-description {
+  font-size: 14/@px-rem;
+  font-weight: 300;
+  color: @taskBubbleContinuesColor;
 }

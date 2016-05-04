@@ -6,73 +6,70 @@
   align-items: flex-start;
   
   height: 100%;
+}
 
-  .chat-bubble {
+.chat-bubble {
 
-    flex-shrink: 0;
-    
-    padding: 5/@px-rem;
+  flex-shrink: 0;
 
-    background-color: #d1fbf8;
-    border: 1/@px-rem solid #DEDEDE;
-    border-radius: 10/@px-rem;
+  padding: 5/@px-rem;
 
-    margin-bottom: 10/@px-rem;
+  background-color: #d1fbf8;
+  border: 1/@px-rem solid #DEDEDE;
+  border-radius: 10/@px-rem;
 
-    max-width: 100%;
-    
-    &.chat-task-title {
-      background-color: #ffffff;
-    }
+  margin-bottom: 10/@px-rem;
 
-    .chat-bubble-title {
+  max-width: 100%;
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .chat-bubble-title-author {
-        color: #195acc;
-        font-weight: 400;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        
-        &.chat-bubble-title-you {
-          font-weight: 500;
-          color: #9C3A28;
-        }
-      }
-
-      .chat-bubble-title-time {
-        font-weight: 200;
-        font-size: 12/@px-rem;
-        text-transform: uppercase;
-        color: #949494;
-        margin-left: 15/@px-rem;
-      }
-
-    }
-
-    .chat-task-title-value {
-      color: #520900;
-      font-weight: 500;
-      font-size: 18/@px-rem;
-    }
-
-    .chat-bubble-message {
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
+  &.chat-task-title {
+    background-color: #ffffff;
   }
-  
-  .chat-action {
-    flex-shrink: 0;
-    color: #9C3A28;
+}
+
+.chat-bubble-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-bubble-title-author {
+  color: #195acc;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &.chat-bubble-title-you {
     font-weight: 500;
-    margin-bottom: 10/@px-rem;
-    width: 100%;
-    margin-left: 7/@px-rem;
+    color: #9C3A28;
   }
+}
 
+.chat-bubble-title-time {
+  font-weight: 200;
+  font-size: 12/@px-rem;
+  text-transform: uppercase;
+  color: #949494;
+  margin-left: 15/@px-rem;
+}
+
+.chat-task-title-value {
+  color: #520900;
+  font-weight: 500;
+  font-size: 18/@px-rem;
+}
+
+.chat-bubble-message {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.chat-action {
+  flex-shrink: 0;
+  color: #9C3A28;
+  font-weight: 500;
+  margin-bottom: 10/@px-rem;
+  width: 100%;
+  margin-left: 7/@px-rem;
 }

@@ -63,6 +63,7 @@ gulp.task('copy', function () {
 
 gulp.task('webserver', function () {
     return gulp.src(BUILD_DIRECTORY).pipe(webserver({
+        host: '0.0.0.0',
         livereload: true,
         directoryListing: false
     }));
