@@ -7,6 +7,7 @@
     "gulp-clean": "^0.3.2",
     "gulp-file-include": "^0.13.7",
     "gulp-less": "^3.0.5",
+    "gulp-svg-sprites": "^3.0.0",
     "gulp-watch": "^4.3.5",
     "gulp-webserver": "^0.9.1",
     "gulp.spritesmith": "^6.2.1",

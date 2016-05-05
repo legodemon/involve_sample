@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     clean = require('gulp-clean'),
     webserver = require('gulp-webserver'),
     spritesmith = require('gulp.spritesmith'),
+    svgSprite = require("gulp-svg-sprites"),
     less = require('gulp-less'),
     fileinclude = require('gulp-file-include'),
     watch = require('gulp-watch');
@@ -33,6 +34,26 @@ gulp.task('build-sprite-css', function () {
     return spriteData.css.pipe(gulp.dest(STATIC_DIRECTORY + '/less/'));
 });
 
+gulp.task('build-sprites-svg', function () {
+    return gulp.src(STATIC_DIRECTORY + '/img/svg/*.svg')
+        .pipe(svgSprite({
+                asyncTransforms: true,
+                transformData: function (data, config, done) {
+                    data.svg.forEach(function(element){
+                        element.raw = element.raw.replace(/fill="#[A-Z0-9]+"/g, '');
+                    });
+                    done(data);
+                },
+                preview: false,
+                mode: 'symbols',
+                svg: {
+                    symbols: 'img/sprite.svg'
+                }
+            }
+        ))
+        .pipe(gulp.dest(STATIC_DIRECTORY));
+});
+
 gulp.task('build-css', function () {
     return gulp.src(STATIC_DIRECTORY + '/less/style.less')
         .pipe(less({
@@ -53,9 +74,8 @@ gulp.task('build-index.html', function () {
 gulp.task('copy', function () {
     return gulp.src([
         STATIC_DIRECTORY + '/css/**/*',
-        //STATIC_DIRECTORY + '/font-awesome/**/*',
         STATIC_DIRECTORY + '/fonts/**/*',
-        STATIC_DIRECTORY + '/img/**/*',
+        STATIC_DIRECTORY + '/img/avatars/*',
         STATIC_DIRECTORY + '/js/**/*'
     ], {base: STATIC_DIRECTORY})
         .pipe(gulp.dest(BUILD_DIRECTORY))
@@ -73,7 +93,7 @@ gulp.task('default', function () {
 
     runSequence(
         'clean',
-        ['build-sprite-img', 'build-sprite-css'],
+        ['build-sprite-img', 'build-sprite-css', 'build-sprites-svg'],
         ['copy', 'build-css', 'build-index.html'],
         'webserver'
     );
@@ -96,7 +116,7 @@ gulp.task('default', function () {
         console.log('rebuild index.html');
         runSequence('build-index.html')
     });
-    
+
     watch(STATIC_DIRECTORY + '/js/**/*.js', function () {
         console.log('copy js');
         runSequence('copy')

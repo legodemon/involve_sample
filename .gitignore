@@ -53,3 +53,5 @@ build/
 
 static/css/sprite.png
 static/less/sprite.less
+
+static/img/sprite.svg

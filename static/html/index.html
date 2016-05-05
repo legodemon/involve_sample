@@ -6,14 +6,21 @@
 
     <link rel="stylesheet" href="css/style.css">
 
+    <meta name="viewport" content="width=device-width" />
+
     <script type="text/javascript" src="js/animate.js"></script>
     <script type="text/javascript" src="js/setup-default.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 
 </head>
 <body>
+
+~~include("../img/sprite.svg")~~
+
 <div class="main" style="display: flex; flex-direction: column">
 
+    ~~include("task-overview.html")~~
+    
     <div class="header">
         ~~include("header-main.html")~~
 
@@ -27,7 +34,7 @@
         ~~include("tasks.html")~~
 
         ~~include("footer-chat.html")~~
-        
+
     </div>
 </div>
 </body>
