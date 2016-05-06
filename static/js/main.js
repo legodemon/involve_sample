@@ -4,9 +4,9 @@ function animate(options) {
 
     var start = performance.now();
 
-    requestAnimationFrame(function animate(time) {
+    (typeof options.onStart === 'function') && options.onStart();
 
-        (typeof options.onStart === 'function') && options.onStart();
+    requestAnimationFrame(function animate(time) {
 
         var timeFraction = (time - start) / options.duration;
         if (timeFraction > 1) {
@@ -31,7 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
         chatContainer = document.querySelector('.chat'),
         taskContainer = document.querySelector('.task'),
         headerChatContainer = document.querySelector('.header-chat'),
-        footerChatContainer = document.querySelector('.footer-chat');
+        footerChatContainer = document.querySelector('.footer-chat'),
+        taskOverviewContainer = document.querySelector('.task-overview'),
+        taskOverviewMask = document.querySelector('.task-overview-mask'),
+        headerChatTitle = document.querySelector('.header-title');
 
     chatContainer.style.width = contentContainer.clientWidth - 2 * parseInt(window.getComputedStyle(contentContainer).padding) + 'px';
     chatContainer.style.position = 'absolute';
@@ -42,6 +45,34 @@ document.addEventListener("DOMContentLoaded", function () {
     headerChatContainer.style.top = -headerChatContainer.offsetHeight - 3 + 'px'; // minus height box-shadow
 
     footerChatContainer.style.bottom = -footerChatContainer.offsetHeight - 1 + 'px';
+
+    taskOverviewContainer.style.top = -window.innerHeight + 'px';
+
+    headerChatTitle.addEventListener('click', function () {
+
+        taskOverviewMask.classList.add('task-overview-mask-animate-in');
+
+        var duration = 200;
+        var taskOverviewContainerStart = -window.innerHeight;
+        var velocity = -taskOverviewContainerStart / duration;
+
+        animate({
+            duration: duration,
+            timing: function (timeFraction) {
+                return timeFraction;
+            },
+            draw: function (progress) {
+                taskOverviewContainer.style.top = taskOverviewContainerStart + (velocity * progress * duration) + 'px';
+            },
+            onStart: function () {
+                console.log('asdasdasd');
+                taskOverviewMask.style.zIndex = '100';
+            },
+            onEnd: function () {
+
+            }
+        });
+    });
 
     taskContainer.addEventListener('click', function () {
 

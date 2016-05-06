@@ -1,21 +1,41 @@
 @taskOverviewBg: #FFFEFE;
 
+.task-overview-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(29, 7, 7, 0);
+  z-index: -1;
+}
+
+.task-overview-mask-animate-in {
+  background-color: rgba(29, 7, 7, 0.7);
+  transition-property: background-color;
+  transition-duration: 200ms;
+}
+
+.task-overview-mask-animate-out {
+  background-color: rgba(29, 7, 7, 0);
+  transition-property: background-color;
+  transition-duration: 200ms;
+}
+
 .task-overview {
   position: absolute;
   width: 100%;
   height: 100%;
   left: 0;
-  bottom: 0;
+  top: 0;
   z-index: 100;
-
-  background-color: rgba(29, 7, 7, 0.7);
 
   padding-left: 5/@px-rem;
   padding-right: 5/@px-rem;
 
   overflow-y: scroll;
   overflow-x: hidden;
-  
+
   .task-overview-wrapper {
 
     .task-overview-content {
@@ -107,25 +127,25 @@
     }
 
     .task-overview-subtask {
-      
+
       display: flex;
       flex-direction: column;
 
       align-items: center;
-      
+
       margin-top: 15/@px-rem;
-      
+
       padding-left: 7/@px-rem;
       padding-right: 7/@px-rem;
-      
+
       .task-overview-add-subtask {
         color: @taskOverviewBg;
         font-size: 20/@px-rem;
         margin-top: 20/@px-rem;
         margin-bottom: 30/@px-rem;
       }
-      
+
     }
-    
+
   }
 }
