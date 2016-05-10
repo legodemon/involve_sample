@@ -1,8 +1,10 @@
+@footerShadowShift: 1/@px-rem;
+
 .footer-chat {
 
   position: absolute;
 
-  bottom: 0;
+  bottom: -(@headerHeight+@footerShadowShift);
   left: 0;
 
   display: flex;
@@ -17,10 +19,11 @@
   
   background-color: @contentBgColor;
 
-  box-shadow: 0 -1px 1px 0 rgba(199, 199, 199, 1);
+  box-shadow: 0 -@footerShadowShift @footerShadowShift 0 rgba(199, 199, 199, 1);
 
   padding: 10/@px-rem;
-  
+
+  transition: bottom @animationDuration;
 }
 
 .footer-chat-input {

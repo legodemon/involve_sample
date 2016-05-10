@@ -4,9 +4,70 @@
     <meta charset="UTF-8">
     <title>Involve Everyone</title>
 
+    <meta name="viewport" content="width=device-width"/>
+
     <link rel="stylesheet" href="css/style.css">
 
-    <meta name="viewport" content="width=device-width"/>
+    <script>
+
+        window.addEventListener('DOMContentLoaded', function () {
+
+            console.log('App start');
+
+            var wrapper = document.querySelector('.wrapper');
+
+            var main = document.querySelector('.main');
+            var page = document.querySelectorAll('.page');
+
+            var requestBubbles = document.querySelectorAll('.request-bubble');
+
+            var headerChat = document.querySelector('.header-chat');
+            var headerChatBackButton = document.querySelector('.header-chat-back-button');
+            var headerChatTitle = document.querySelector('.header-title');
+
+            var footerChat = document.querySelector('.footer-chat');
+
+            var requestOverview = document.querySelector('.request-overview');
+            var requestOverviewMask = document.querySelector('.request-overview-mask');
+            var requestOverviewBackButton = document.querySelector('.request-overview-back-button');
+
+            main.classList.add('main-flex');
+            main.classList.add('double-width');
+            page[0].classList.add('half-width');
+            page[1].classList.add('half-width');
+
+            Array.prototype.forEach.call(requestBubbles, function (requestBubble) {
+                requestBubble.addEventListener('click', function () {
+                    page[0].classList.add('request-to-left');
+                    headerChat.classList.add('header-down');
+                    footerChat.classList.add('footer-up');
+                });
+            });
+
+            headerChatBackButton.addEventListener('click', function () {
+                page[0].classList.remove('request-to-left');
+                headerChat.classList.remove('header-down');
+                footerChat.classList.remove('footer-up');
+            });
+
+            headerChatTitle.addEventListener('click', function () {
+                requestOverviewMask.style.zIndex = '10';
+                requestOverviewMask.classList.add('mask-show');
+
+                requestOverview.classList.add('request-overview-down');
+            });
+
+            requestOverviewBackButton.addEventListener('click', function () {
+                requestOverview.classList.remove('request-overview-down');
+                requestOverviewMask.classList.remove('mask-show');
+            });
+
+            requestOverviewMask.addEventListener('transitionend', function () {
+                !requestOverviewMask.classList.contains('mask-show') && (requestOverviewMask.style.zIndex = '-1');
+            });
+        })
+
+    </script>
 
 </head>
 <body>
@@ -17,21 +78,33 @@
 
     ~~include("request-overview-mask.html")~~
 
-    ~~include("request-overview.html")~~
-    
-    <div class="container">
+    <div class="wrapper double-height">
 
-        <div class="header">
+        ~~include("request-overview.html")~~
 
-            ~~include("header-main.html")~~
+        <div class="container half-height">
 
-        </div>
+            <div class="header">
 
-        <div class="main">
+                ~~include("header-main.html")~~
 
-            ~~include("request.html")~~
+                ~~include("header-chat.html")~~
 
-            ~~include("chat.html")~~
+            </div>
+
+            <div class="main">
+
+                <div class="page">
+                    ~~include("request.html")~~
+                </div>
+
+                <div class="page">
+                    ~~include("chat.html")~~
+                </div>
+
+            </div>
+
+            ~~include("footer-chat.html")~~
 
         </div>
     </div>

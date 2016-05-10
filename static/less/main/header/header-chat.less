@@ -1,8 +1,10 @@
+@headerShadowShift: 3/@px-rem;
+
 .header-chat {
 
   position: absolute;
 
-  top: 0;
+  top: calc(-@headerHeight - @headerShadowShift);
   left: 0;
   
   display: flex;
@@ -20,8 +22,9 @@
 
   background-color: #FBFBFA;
   
-  box-shadow: 0 3px 3px 0 rgba(199, 199, 199, 1);
-  
+  box-shadow: 0 @headerShadowShift @headerShadowShift 0 rgba(199, 199, 199, 1);
+
+  transition: top @animationDuration;
 }
 
 .header-back {
