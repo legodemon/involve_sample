@@ -6,38 +6,36 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-    <meta name="viewport" content="width=device-width" />
-
-    <script type="text/javascript" src="js/animate.js"></script>
-    <script type="text/javascript" src="js/setup-default.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <meta name="viewport" content="width=device-width"/>
 
 </head>
 <body>
 
-~~include("task-overview-mask.html")~~
-
 ~~include("../img/sprite.svg")~~
 
-<div class="main" style="display: flex; flex-direction: column">
+<div class="app">
 
-    ~~include("task-overview.html")~~
+    ~~include("request-overview-mask.html")~~
+
+    ~~include("request-overview.html")~~
     
-    <div class="header">
-        ~~include("header-main.html")~~
+    <div class="container">
 
-        ~~include("header-chat.html")~~
-    </div>
+        <div class="header">
 
-    <div class="content">
+            ~~include("header-main.html")~~
 
-        ~~include("chat.html")~~
+        </div>
 
-        ~~include("tasks.html")~~
+        <div class="main">
 
-        ~~include("footer-chat.html")~~
+            ~~include("request.html")~~
 
+            ~~include("chat.html")~~
+
+        </div>
     </div>
 </div>
+
 </body>
 </html>

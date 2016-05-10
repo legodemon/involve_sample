@@ -1,6 +1,6 @@
-@taskOverviewBg: #FFFEFE;
+@requestOverviewBg: #FFFEFE;
 
-.task-overview-mask {
+.request-overview-mask {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -10,19 +10,19 @@
   z-index: -1;
 }
 
-.task-overview-mask-animate-in {
+.request-overview-mask-animate-in {
   background-color: rgba(29, 7, 7, 0.7);
   transition-property: background-color;
   transition-duration: 200ms;
 }
 
-.task-overview-mask-animate-out {
+.request-overview-mask-animate-out {
   background-color: rgba(29, 7, 7, 0);
   transition-property: background-color;
   transition-duration: 200ms;
 }
 
-.task-overview {
+.request-overview {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -36,13 +36,13 @@
   overflow-y: scroll;
   overflow-x: hidden;
 
-  .task-overview-wrapper {
+  .request-overview-wrapper {
 
-    .task-overview-content {
+    .request-overview-content {
 
-      background-color: @taskOverviewBg;
+      background-color: @requestOverviewBg;
 
-      .task-overview-header {
+      .request-overview-header {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -50,7 +50,7 @@
         border-bottom: 2/@px-rem solid #D8CBCB;
         padding: 10/@px-rem;
 
-        .task-overview-title {
+        .request-overview-title {
 
           display: flex;
           justify-content: space-between;
@@ -61,55 +61,55 @@
           .header-icon {
             width: 20/@px-rem;
             height: 20/@px-rem;
-            stroke: @taskBubbleTitleColor;
-            fill: @taskBubbleTitleColor;
+            stroke: @requestBubbleTitleColor;
+            fill: @requestBubbleTitleColor;
           }
 
-          .task-overview-title-value {
+          .request-overview-title-value {
             font-weight: 500;
             font-size: 18/@px-rem;
-            color: @taskBubbleTitleColor;
+            color: @requestBubbleTitleColor;
             max-width: 80%;
           }
         }
 
-        .task-overview-description {
-          color: @taskBubbleContinuesColor;
+        .request-overview-description {
+          color: @requestBubbleContinuesColor;
           line-height: 22/@px-rem;
         }
 
-        .task-overview-comment {
+        .request-overview-comment {
           margin-top: 10/@px-rem;
           margin-bottom: 5/@px-rem;
           font-size: 14/@px-rem;
 
-          &.task-overview-inwork {
+          &.request-overview-inwork {
             color: @DecisionInwork;
           }
 
-          &.task-overview-toverify {
+          &.request-overview-toverify {
             color: @DecisionToverify;
           }
 
-          &.task-overview-todo {
+          &.request-overview-todo {
             color: @DecisionTodo;
           }
 
         }
       }
 
-      .task-overview-member {
+      .request-overview-member {
         display: flex;
         justify-content: space-between;
 
         padding: 15px;
 
-        .task-overview-member-value {
+        .request-overview-member-value {
           white-space: nowrap;
           overflow: hidden;
           max-width: 90%;
           text-overflow: ellipsis;
-          color: @taskBubbleDescrColor;
+          color: @requestBubbleDescrColor;
         }
 
         .icon-remove-member {
@@ -121,12 +121,12 @@
         }
       }
 
-      .task-overview-member:not(:last-child) {
+      .request-overview-member:not(:last-child) {
         border-bottom: 2/@px-rem solid #D8CBCB;
       }
     }
 
-    .task-overview-subtask {
+    .request-overview-subrequest {
 
       display: flex;
       flex-direction: column;
@@ -138,8 +138,8 @@
       padding-left: 7/@px-rem;
       padding-right: 7/@px-rem;
 
-      .task-overview-add-subtask {
-        color: @taskOverviewBg;
+      .request-overview-add-subrequest {
+        color: @requestOverviewBg;
         font-size: 20/@px-rem;
         margin-top: 20/@px-rem;
         margin-bottom: 30/@px-rem;

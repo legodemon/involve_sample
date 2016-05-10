@@ -1,4 +1,15 @@
-.task-bubble {
+.request {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  padding: 10/@px-rem;
+
+  min-height: min-content;
+}
+
+.request-bubble {
 
   display: flex;
 
@@ -13,16 +24,19 @@
   margin-bottom: 10/@px-rem;
   padding: 20/@px-rem 16/@px-rem 16/@px-rem 16/@px-rem;
 
+  max-width: 50rem;
+  width: 100%;
+
 }
 
-.task-body {
+.request-body {
   display: flex;
   justify-content: space-around;
 
   width: 100%;
 }
 
-.task-content {
+.request-content {
 
   display: flex;
   flex-direction: column;
@@ -36,7 +50,7 @@
   width: 100%;
 }
 
-.task-title {
+.request-title {
 
   display: flex;
   flex-direction: row;
@@ -44,44 +58,43 @@
   align-items: center;
 }
 
-.task-title-value {
+.request-title-value {
   font-weight: 500;
 
-  line-height: 32/@px-rem;
   font-size: 16/@px-rem;
 
-  color: @taskBubbleTitleColor;
+  color: @requestBubbleTitleColor;
 }
 
-.task-actions {
+.request-actions {
   border-radius: 10px;
-  background-color: @taskBubbleActionBgColor;
+  background-color: @requestBubbleActionBgColor;
   min-width: 16/@px-rem;
   max-height: 16/@px-rem;
 
   line-height: 16/@px-rem;
   font-size: 10/@px-rem;
 
-  color: @taskBubbleActionColor;
+  color: @requestBubbleActionColor;
   text-align: center;
 }
 
-.task-description {
+.request-description {
   font-weight: 300;
-  color: @taskBubbleDescrColor;
+  color: @requestBubbleDescrColor;
 }
 
-.task-member {
+.request-member {
   font-weight: 300;
-  color: @taskBubbleMemberColor;
+  color: @requestBubbleMemberColor;
 }
 
-.task-continues {
+.request-continues {
   font-weight: 300;
-  color: @taskBubbleContinuesColor;
+  color: @requestBubbleContinuesColor;
 }
 
-.task-action {
+.request-action {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,29 +102,29 @@
   width: 77%;
   margin-top: 5/@px-rem;
   
-  &.task-action-inwork {
+  &.request-action-inwork {
     border-top: 1/@px-rem solid @DecisionInwork;
-    .task-action-title {
+    .request-action-title {
       color: @DecisionInwork;
     }
   }
 
-  &.task-action-toverify {
+  &.request-action-toverify {
     border-top: 1/@px-rem solid @DecisionToverify;
-    .task-action-title {
+    .request-action-title {
       color: @DecisionToverify;
     }
   }
 
-  &.task-action-todo {
+  &.request-action-todo {
     border-top: 1/@px-rem solid @DecisionTodo;
-    .task-action-title {
+    .request-action-title {
       color: @DecisionTodo;
     }
   }
 }
 
-.task-action-title {
+.request-action-title {
   font-weight: 500;
 
   margin-top: 5/@px-rem;
@@ -119,8 +132,8 @@
 
 }
 
-.task-action-description {
+.request-action-description {
   font-size: 14/@px-rem;
   font-weight: 300;
-  color: @taskBubbleContinuesColor;
+  color: @requestBubbleContinuesColor;
 }
