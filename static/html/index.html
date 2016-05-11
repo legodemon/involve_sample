@@ -12,10 +12,6 @@
 
         window.addEventListener('DOMContentLoaded', function () {
 
-            console.log('App start');
-
-            var wrapper = document.querySelector('.wrapper');
-
             var main = document.querySelector('.main');
             var page = document.querySelectorAll('.page');
 
@@ -30,11 +26,6 @@
             var requestOverview = document.querySelector('.request-overview');
             var requestOverviewMask = document.querySelector('.request-overview-mask');
             var requestOverviewBackButton = document.querySelector('.request-overview-back-button');
-
-            main.classList.add('main-flex');
-            main.classList.add('double-width');
-            page[0].classList.add('half-width');
-            page[1].classList.add('half-width');
 
             Array.prototype.forEach.call(requestBubbles, function (requestBubble) {
                 requestBubble.addEventListener('click', function () {
@@ -92,13 +83,13 @@
 
             </div>
 
-            <div class="main">
+            <div class="main main-flex double-width">
 
-                <div class="page">
+                <div class="page half-width">
                     ~~include("request.html")~~
                 </div>
 
-                <div class="page">
+                <div class="page half-width">
                     ~~include("chat.html")~~
                 </div>
 

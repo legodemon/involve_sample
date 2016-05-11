@@ -1,0 +1,127 @@
+.request-overview-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: fade(@requestOverviewMaskColor, 0);
+  transition: background-color @animationDuration, height @animationDuration;
+}
+
+.request-overview {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  padding-left: 5/@px-rem;
+  padding-right: 5/@px-rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: -100%;
+  transition: margin-top @animationDuration;
+}
+
+.request-overview-wrapper {
+
+}
+
+.request-overview-content {
+  background-color: @requestOverviewBg;
+}
+
+.request-overview-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2/@px-rem solid @requestOverviewHeaderDelimiterColor;
+  padding: 10/@px-rem;
+}
+
+.request-overview-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 10/@px-rem;
+  align-items: center;
+}
+
+.header-icon {
+  width: 20/@px-rem;
+  height: 20/@px-rem;
+  stroke: @requestBubbleTitleColor;
+  fill: @requestBubbleTitleColor;
+}
+
+.request-overview-title-value {
+  font-weight: 500;
+  font-size: 18/@px-rem;
+  color: @requestBubbleTitleColor;
+  max-width: 80%;
+}
+
+.request-overview-description {
+  color: @requestBubbleContinuesColor;
+  line-height: 22/@px-rem;
+}
+
+.request-overview-comment {
+  margin-top: 10/@px-rem;
+  margin-bottom: 5/@px-rem;
+  font-size: 14/@px-rem;
+
+  &.request-overview-inwork {
+    color: @DecisionInwork;
+  }
+
+  &.request-overview-toverify {
+    color: @DecisionToverify;
+  }
+
+  &.request-overview-todo {
+    color: @DecisionTodo;
+  }
+
+}
+
+.request-overview-member {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.request-overview-member-value {
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  color: @requestBubbleDescrColor;
+}
+
+.icon-remove-member {
+  stroke: none;
+  fill: #5F6B63;
+}
+
+.request-overview-member:not(:last-child) {
+  border-bottom: 2/@px-rem solid #D8CBCB;
+}
+
+.request-overview-subrequest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15/@px-rem;
+  padding-left: 7/@px-rem;
+  padding-right: 7/@px-rem;
+}
+
+.request-overview-add-subrequest {
+  color: @requestOverviewBg;
+  font-size: 20/@px-rem;
+  margin-top: 20/@px-rem;
+  margin-bottom: 30/@px-rem;
+}

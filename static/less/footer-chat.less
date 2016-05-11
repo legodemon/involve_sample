@@ -1,28 +1,17 @@
-@footerShadowShift: 1/@px-rem;
 
 .footer-chat {
-
   position: absolute;
-
-  bottom: -(@headerHeight+@footerShadowShift);
+  bottom: -(@plankHeight+@footerShadowShift);
   left: 0;
-
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   width: 100%;
   height: 1/@px-rem;
-  min-height: @headerHeight;
-  
+  min-height: @plankHeight;
   background-color: @contentBgColor;
-
-  box-shadow: 0 -@footerShadowShift @footerShadowShift 0 rgba(199, 199, 199, 1);
-
+  box-shadow: 0 -@footerShadowShift @footerShadowShift 0 @shadowColor;
   padding: 10/@px-rem;
-
   transition: bottom @animationDuration;
 }
 
@@ -47,6 +36,10 @@
 
 .footer-chat-input:focus {
   outline: none;
+}
+
+.icon-send {
+  fill: #5D5D5D;
 }
 
 .footer-chat-add-button {

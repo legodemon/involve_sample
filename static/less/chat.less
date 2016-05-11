@@ -1,32 +1,22 @@
 .chat {
-
   display: flex;
   flex-direction: column;
-
   align-items: flex-start;
-  
   height: 100%;
-
   padding: 10/@px-rem;
-  
 }
 
 .chat-bubble {
-
   flex-shrink: 0;
-
   padding: 5/@px-rem;
-
-  background-color: #d1fbf8;
-  border: 1/@px-rem solid #DEDEDE;
+  background-color: @chatBubbleBgColor;
+  border: 1/@px-rem solid @chatBubbleBorderColor;
   border-radius: 10/@px-rem;
-
   margin-bottom: 10/@px-rem;
-
   max-width: 100%;
 
   &.chat-task-title {
-    background-color: #ffffff;
+    background-color: @chatBubbleTaskBgColor;
   }
 }
 
@@ -37,15 +27,15 @@
 }
 
 .chat-bubble-title-author {
-  color: #195acc;
+  color: @chatBubbleTitleAuthorColor;
   font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
+  
   &.chat-bubble-title-you {
     font-weight: 500;
-    color: #9C3A28;
+    color: @chatBubbleTitleYouColor;
   }
 }
 
@@ -53,12 +43,12 @@
   font-weight: 200;
   font-size: 12/@px-rem;
   text-transform: uppercase;
-  color: #949494;
+  color: @chatBubbleTimeColor;
   margin-left: 15/@px-rem;
 }
 
 .chat-task-title-value {
-  color: #520900;
+  color: @chatBubbleTimeColor;
   font-weight: 500;
   font-size: 18/@px-rem;
 }
@@ -70,7 +60,7 @@
 
 .chat-action {
   flex-shrink: 0;
-  color: #9C3A28;
+  color: @chatBubbleActionColor;
   font-weight: 500;
   margin-bottom: 10/@px-rem;
   width: 100%;
