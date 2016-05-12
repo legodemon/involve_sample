@@ -6,7 +6,7 @@
   left: 0;
   z-index: -1;
   background-color: fade(@requestOverviewMaskColor, 0);
-  transition: background-color @animationDuration, height @animationDuration;
+  transition: background-color 250ms, height 250ms;
 }
 
 .request-overview {
@@ -21,7 +21,8 @@
   overflow-y: auto;
   overflow-x: hidden;
   margin-top: -100%;
-  transition: margin-top @animationDuration;
+  transition: margin-top 300ms;
+  -webkit-overflow-scrolling: touch;
 }
 
 .request-overview-wrapper {

@@ -49,14 +49,22 @@
 }
 
 .request-actions {
-  border-radius: 10px;
-  background-color: @requestBubbleActionBgColor;
   min-width: 16/@px-rem;
   max-height: 16/@px-rem;
   line-height: 16/@px-rem;
   font-size: 10/@px-rem;
   color: @requestBubbleActionColor;
-  text-align: center;
+//  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  border-radius: 1rem;
+  padding: 0 0.2rem;
+//  color: white;
+  background-color: @requestBubbleActionBgColor;
+
+
 }
 
 .request-description {

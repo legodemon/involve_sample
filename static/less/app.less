@@ -1,15 +1,14 @@
 .app {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .wrapper {
-
+  overflow: hidden;
 }
 
 .container {
@@ -28,6 +27,8 @@
 
   flex-grow: 0;
   flex-shrink: 0;
+  
+  z-index: 10;
 }
 
 .main {
@@ -37,6 +38,7 @@
 
 .page {
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   transition: margin-left @animationDuration;
 }
