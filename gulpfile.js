@@ -6,13 +6,15 @@ var gulp = require('gulp'),
     svgSprite = require("gulp-svg-sprites"),
     less = require('gulp-less'),
     fileinclude = require('gulp-file-include'),
+    iconfont = require('gulp-iconfont'),
+    iconfontCss = require('gulp-iconfont-css'),
     watch = require('gulp-watch');
 
 var BUILD_DIRECTORY = './build',
     STATIC_DIRECTORY = './static';
 
 gulp.task('clean', function () {
-    return gulp.src(BUILD_DIRECTORY, {read: false})
+    return gulp.src([BUILD_DIRECTORY, STATIC_DIRECTORY + '/fonts/involve'], {read: false})
         .pipe(clean());
 });
 
@@ -34,12 +36,29 @@ gulp.task('build-sprite-css', function () {
     return spriteData.css.pipe(gulp.dest(STATIC_DIRECTORY + '/less/'));
 });
 
+gulp.task('iconfont', function(){
+    return gulp.src([STATIC_DIRECTORY + '/img/svg/*.svg'])
+        .pipe(iconfontCss({
+            fontName: 'involve',
+            path: './node_modules/gulp-iconfont-css/templates/_icons.css',
+            targetPath: '../../less/involve-font.css',
+            fontPath: '../fonts/involve/'
+        }))
+        .pipe(iconfont({
+            fontName: 'involve', // required
+            prependUnicode: true, // recommended option
+            formats: ['ttf', 'eot', 'woff'], // default, 'woff2' and 'svg' are available
+            timestamp: Math.round(Date.now() / 1000) // recommended to get consistent builds when watching files
+        }))
+        .pipe(gulp.dest(STATIC_DIRECTORY + '/fonts/involve'));
+});
+
 gulp.task('build-sprites-svg', function () {
     return gulp.src(STATIC_DIRECTORY + '/img/svg/*.svg')
         .pipe(svgSprite({
                 asyncTransforms: true,
                 transformData: function (data, config, done) {
-                    data.svg.forEach(function(element){
+                    data.svg.forEach(function (element) {
                         element.raw = element.raw.replace(/fill="#[A-Z0-9]+"/g, '');
                     });
                     done(data);
@@ -55,7 +74,17 @@ gulp.task('build-sprites-svg', function () {
 });
 
 gulp.task('build-css', function () {
-    return gulp.src(STATIC_DIRECTORY + '/less/style.less')
+    return gulp.src([
+        STATIC_DIRECTORY + '/less/style.less',
+        STATIC_DIRECTORY + '/less/request.less',
+        STATIC_DIRECTORY + '/less/chat.less',
+        STATIC_DIRECTORY + '/less/header-main.less',
+        STATIC_DIRECTORY + '/less/header-chat.less',
+        STATIC_DIRECTORY + '/less/footer-chat.less',
+        STATIC_DIRECTORY + '/less/request-overview.less',
+        STATIC_DIRECTORY + '/less/animation.less',
+        STATIC_DIRECTORY + '/less/common.less'
+    ])
         .pipe(less({
             paths: ['./less']
         }))
@@ -74,7 +103,7 @@ gulp.task('build-index.html', function () {
 gulp.task('copy', function () {
     return gulp.src([
         STATIC_DIRECTORY + '/css/**/*',
-        STATIC_DIRECTORY + '/fonts/**/*',
+        STATIC_DIRECTORY + '/fonts/**',
         STATIC_DIRECTORY + '/img/avatars/*',
         STATIC_DIRECTORY + '/js/**/*'
     ], {base: STATIC_DIRECTORY})
@@ -94,6 +123,7 @@ gulp.task('default', function () {
     runSequence(
         'clean',
         ['build-sprite-img', 'build-sprite-css', 'build-sprites-svg'],
+        'iconfont',
         ['copy', 'build-css', 'build-index.html'],
         'webserver'
     );

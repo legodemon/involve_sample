@@ -6,6 +6,8 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-file-include": "^0.13.7",
+    "gulp-iconfont": "^8.0.0",
+    "gulp-iconfont-css": "^2.1.0",
     "gulp-less": "^3.0.5",
     "gulp-svg-sprites": "^3.0.0",
     "gulp-watch": "^4.3.5",
